@@ -1,0 +1,21 @@
+{{template "base".}}
+
+{{define "content"}}
+<div class="container">
+    <!--adjusts the look of the page -->
+    <div class="row"> 
+        <div class="col">
+             <h1>This is the about page </h1>  
+             <p>This is about stuff </p>
+         </div>
+     </div>
+     <p>This came from the template:{{index.StringMap "test"}} </p><!--pulling data from handler to template .represents data being collected -->
+     <p>
+         {{if ne(index.StringMap "remote_ip")""}}<!--if theres a value stored in a string and its not an empty string (ne means not equal to) -->
+           Your remote IP address is {(index.StringMap "remote_ip"{}}
+         {{else}}
+            I dont know your ip address yet.Visit the <a href="/">Home page</a>so i can set it.
+         {{end}}
+     </p>
+ </div>
+{{end}}
